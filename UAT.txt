@@ -1,0 +1,31 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone') {
+            steps {
+                git 'https://github.com/SucharithaSathupalli01/Project-UAT.git'
+            }
+        }
+        stage('config') {
+            steps {
+               bat '''
+               git config user.name "harish"
+               git config user.email "harishcloud1810@gmail.com"
+                 '''
+           }
+        }
+         stage('steps') {
+            steps {
+               
+               bat '''
+               git init
+               git status
+               git add .
+               git commit -m "created"
+               git push origin master
+               '''
+        }
+    }
+    }
+    }
